@@ -1,68 +1,63 @@
 ![Design Patterns For Humans](https://cloud.githubusercontent.com/assets/11269635/23065273/1b7e5938-f515-11e6-8dd3-d0d58de6bb9a.png)
 
-# Шаблоны (паттерны) проектирования для людей
-
 ***
 <p align="center">
-🎉 Ультра-простое объяснение шаблонов проектирования! 🎉
+🎉 Ultra-simplified explanation to design patterns! 🎉
 </p>
 <p align="center">
-Тема, которая может легко смутить любого. Я, на максимально <i>простых</i> примерах, стараюсь объяснить их и оставить след в вашей (и, возможно, своей) голове.
+A topic that can easily make anyone's mind wobble. Here I try to make them stick in to your mind (and maybe mine) by explaining them in the <i>simplest</i> way possible.
 </p>
-
 ***
 
-🚀 Вступление
+🚀 Introduction
 =================
 
-Шаблоны проектирования являются решениями некоторых часто возникающих ситуаций; **руководством как решать определенные задачи**. Они не классы, пакеты или библиотеки, которые вы могли бы подключить к вашему приложению и ожидать что случится чудо. Они, скорее, путеводители как решить определенную проблему в определенном контексте. 
+Design patterns are solutions to recurring problems; **guidelines on how to tackle certain problems**. They are not classes, packages or libraries that you can plug into your application and wait for the magic to happen. These are, rather, guidelines on how to tackle certain problems in certain situations.
 
-> Шаблоны проектирования - решения повторяющихся проблем; руководства как решить определенную проблему
+> Design patterns are solutions to recurring problems; guidelines on how to tackle certain problems
 
-Википедия опысывает их как:
+Wikipedia describes them as
 
-> В разработке программного обеспечения — повторяемая архитектурная конструкция, представляющая собой решение проблемы проектирования в рамках некоторого часто возникающего контекста. Обычно шаблон не является законченным образцом, который может быть прямо преобразован в код; это лишь пример решения задачи, который можно использовать в различных ситуациях. *(приведена цитата из русскоязычной Википедии - прим. переводчика)*
+> In software engineering, a software design pattern is a general reusable solution to a commonly occurring problem within a given context in software design. It is not a finished design that can be transformed directly into source or machine code. It is a description or template for how to solve a problem that can be used in many different situations.
 
-
-⚠️ Будьте осторожны
+⚠️ Be Careful
 -----------------
-- Шаблоны проектирования - не волшебная таблетка от всех проблем.
-- Не злоупотребляйте ими, это может привести к неприятностям. Помните, что шаблоны проектирования предназначены для **решения**, а не **добавления** проблем, так что не переусердствуйте.
-- Используемые в правильном месте и правильным образом, они подтверждают свою полезность. В противном же случае могут привести к ужасному нагромождению кода.
+- Design patterns are not a silver bullet to all your problems.
+- Do not try to force them; bad things are supposed to happen, if done so. Keep in mind that design patterns are solutions **to** problems, not solutions **finding** problems; so don't overthink.
+- If used in a correct place in a correct manner, they can prove to be a savior; or else they can result in a horrible mess of a code.
 
-> Обратите также внимание, что примеры кода ниже будут на PHP-7 (Javascript - прим. переводчика), что не должно вас останавливать потому, что концепция все-равно одна и та же. Плюс, на подходе **поддержка других языков**
+> Also note that the code samples below are in PHP-7, however this shouldn't stop you because the concepts are same anyways. Plus the **support for other languages is underway**.
 
-Типы Шаблонов Проектирования
+Types of Design Patterns
 -----------------
 
-* [Порождающие шаблоны](#creational-design-patterns)
-* [Структурные шаблоны (англ. Structural patterns)](#structural-design-patterns)
-* [Поведенческие шаблоны (англ. behavioral patterns)](#behavioral-design-patterns)
+* [Creational](#creational-design-patterns)
+* [Structural](#structural-design-patterns)
+* [Behavioral](#behavioral-design-patterns)
 
-Порождающие Шаблоны Проектирования
+Creational Design Patterns
 ==========================
 
-Простыми словами:
-> Порождающие шаблоны (англ. Creational patterns) сфокусированы на процессе инстанцирования объектов или групп связанных объектов
+In plain words
+> Creational patterns are focused towards how to instantiate an object or group of related objects.
 
-В Википедии говорится:
-> Порождающие шаблоны - шаблоны проектирования, которые абстрагируют процесс инстанцирования. Они позволяют сделать систему независимой от способа создания, композиции и представления объектов. Шаблон, порождающий классы, использует наследование, чтобы изменять наследуемый класс, а шаблон, порождающий объекты, делегирует инстанцирование другому объекту.
+Wikipedia says
+> In software engineering, creational design patterns are design patterns that deal with object creation mechanisms, trying to create objects in a manner suitable to the situation. The basic form of object creation could result in design problems or added complexity to the design. Creational design patterns solve this problem by somehow controlling this object creation.
 
- * [Простая фабрика (англ. simple factory)](#-simple-factory)
- * [Фабричный метод (англ. factory method)](#-factory-method)
- * [Абстрактная фабрика (англ. abstract factory)](#-abstract-factory)
- * [Строитель (англ. builder)](#-builder)
- * [Прототип (англ. prototype)](#-prototype)
- * [Одиночка (англ. singleton)](#-singleton)
+ * [Simple Factory](#-simple-factory)
+ * [Factory Method](#-factory-method)
+ * [Abstract Factory](#-abstract-factory)
+ * [Builder](#-builder)
+ * [Prototype](#-prototype)
+ * [Singleton](#-singleton)
 
-🏠 Простая фабрика
+🏠 Simple Factory
 --------------
-Пример из реального мира
-> Представьте, вы стоите дом и вам нужны двери. Это было бы не оправданно, если бы каждый раз, когда вам требуется дверь, вы бы надевали костюм плотника и начинали делать дверь самостоятельно. Вместо этого, дверь для вас могут сделать на фабрике.
+Real world example
+> Consider, you are building a house and you need doors. It would be a mess if every time you need a door, you put on your carpenter clothes and start making a door in your house. Instead you get it made from a factory.
 
-Простыми словами
+In plain words
 > Simple factory simply generates an instance for client without exposing any instantiation logic to the client
-> Простая фабрика просто создает экземпляр для клиента без предоставления клиенту какой либо логики создания.
 
 Wikipedia says
 > In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
