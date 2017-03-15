@@ -19,9 +19,9 @@
 
 > Шаблоны проектирования - решения повторяющихся проблем; руководства как решить определенную проблему
 
-Википедия опысывает их как:
+[Википедия](https://ru.wikipedia.org/wiki/%D0%A8%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F#.D0.9E.D1.81.D0.BD.D0.BE.D0.B2.D0.BD.D1.8B.D0.B5) опысывает их как:
 
-> В разработке программного обеспечения — повторяемая архитектурная конструкция, представляющая собой решение проблемы проектирования в рамках некоторого часто возникающего контекста. Обычно шаблон не является законченным образцом, который может быть прямо преобразован в код; это лишь пример решения задачи, который можно использовать в различных ситуациях. *(здесь и далее по возможности цитаты из русскоязычной Википедии - прим. переводчика)*
+> В разработке программного обеспечения — повторяемая архитектурная конструкция, представляющая собой решение проблемы проектирования в рамках некоторого часто возникающего контекста. Обычно шаблон не является законченным образцом, который может быть прямо преобразован в код; это лишь пример решения задачи, который можно использовать в различных ситуациях. *(здесь и далее цитаты из русскоязычной Википедии, если не указано обратное - прим. переводчика)*
 
 
 ⚠️ Будьте осторожны
@@ -45,17 +45,17 @@
 Простыми словами:
 > Порождающие шаблоны (англ. Creational patterns) сфокусированы на процессе инстанцирования объектов или групп связанных объектов
 
-Википедия:
+[Википедия](https://ru.wikipedia.org/wiki/%D0%9F%D0%BE%D1%80%D0%BE%D0%B6%D0%B4%D0%B0%D1%8E%D1%89%D0%B8%D0%B5_%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F):
 > Порождающие шаблоны - шаблоны проектирования, которые абстрагируют процесс инстанцирования. Они позволяют сделать систему независимой от способа создания, композиции и представления объектов. Шаблон, порождающий классы, использует наследование, чтобы изменять наследуемый класс, а шаблон, порождающий объекты, делегирует инстанцирование другому объекту.
 
- * [Простая фабрика (англ. simple factory)](#-simple-factory)
- * [Фабричный метод (англ. factory method)](#-factory-method)
- * [Абстрактная фабрика (англ. abstract factory)](#-abstract-factory)
+ * [Простая фабрика](#-simple-factory)
+ * [Фабричный метод](#-factory-method)
+ * [Абстрактная фабрика](#-abstract-factory)
  * [Строитель (англ. builder)](#-builder)
  * [Прототип (англ. prototype)](#-prototype)
  * [Одиночка (англ. singleton)](#-singleton)
 
-🏠 Простая фабрика
+🏠 Простая фабрика _(англ. simple factory)_
 --------------
 Пример из реального мира
 > Представьте, вы стоите дом и вам нужны двери. Это было бы не оправданно, если бы каждый раз, когда вам требуется дверь, вы бы надевали костюм плотника и начинали делать дверь самостоятельно. Вместо этого, дверь для вас могут сделать на фабрике.
@@ -63,12 +63,12 @@
 Простыми словами
 > Простая фабрика просто создает экземпляр для клиента не предоставляя клиенту какой либо логики создания.
 
-Википедия
-> In object-oriented programming (OOP), a factory is an object for creating other objects – formally a factory is a function or method that returns objects of a varying prototype or class from some method call, which is assumed to be "new".
+[Википедия](https://en.wikipedia.org/wiki/Factory_(object-oriented_programming))
+> В объектно-ориентированном программировании (ООП), фабрика - это объект, создающий другие объекты. Формально фабрика это функция или метод, вызов которой возвращает объекты различных классов или прототипов, которые можно считать "новыми".
 
 **Пример кода**
 
-First of all we have a door interface and the implementation
+Прежде всего у нас есть интерфейс door и его имплементация
 ```php
 interface Door
 {
@@ -98,7 +98,7 @@ class WoodenDoor implements Door
     }
 }
 ```
-Then we have our door factory that makes the door and returns it
+Затем фабрика DoorFactory создает двери и возвращает их.
 ```php
 class DoorFactory
 {
@@ -108,7 +108,7 @@ class DoorFactory
     }
 }
 ```
-And then it can be used as
+И затем, мы это можем использовать так
 ```php
 $door = DoorFactory::makeDoor(100, 200);
 echo 'Width: ' . $door->getWidth();
@@ -119,7 +119,7 @@ echo 'Height: ' . $door->getHeight();
 
 Если создание объекта не ограничевается парой присвоений и требует вовлечения определенной логики, имеет смысл вынести ее в отдельную фабрику вместо постоянного повторения одного и того же кода.
 
-🏭 Фабричный метод
+🏭 Фабричный метод _(англ. factory method)_
 --------------
 
 Пример из реального мира
@@ -128,8 +128,8 @@ echo 'Height: ' . $door->getHeight();
 Простыми словами
 > Обеспечивает возможность передачи логики создания в дочерние классы.
 
-Википедия
-> In class-based programming, the factory method pattern is a creational pattern that uses factory methods to deal with the problem of creating objects without having to specify the exact class of the object that will be created. This is done by creating objects by calling a factory method—either specified in an interface and implemented by child classes, or implemented in a base class and optionally overridden by derived classes—rather than by calling a constructor.
+[Википедия](https://ru.wikipedia.org/wiki/%D0%A4%D0%B0%D0%B1%D1%80%D0%B8%D1%87%D0%BD%D1%8B%D0%B9_%D0%BC%D0%B5%D1%82%D0%BE%D0%B4_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F))
+> Фабричный метод (англ. Factory Method также известен как Виртуальный конструктор (англ. Virtual Constructor)) — порождающий шаблон проектирования, предоставляющий подклассам интерфейс для создания экземпляров некоторого класса. В момент создания наследники могут определить, какой класс создавать. Иными словами, Фабрика делегирует создание объектов наследникам родительского класса. Это позволяет использовать в коде программы не специфические классы, а манипулировать абстрактными объектами на более высоком уровне.
 
  **Пример кода**
 
@@ -209,22 +209,20 @@ $marketingManager->takeInterview(); // Output: Asking about community building.
 
 Полезно когда в классе присутствуют несколько общих процессов, но требуемый подкласс определяется динамично во время исполнения. Или другими словами, когда клиент не знает какой конкретно подкласс может потребоваться.
 
-🔨 Абстрактная фабрика
+🔨 Абстрактная фабрика _(англ. abstract factory)_
 ----------------
 
-Real world example
+Пример из реального мира
 > Расширим пример с дверьми из простой фабрики. В зависимости от ваших нужд вы можете захотеть деревянную дверь из магазина деревянных дверей, железную дверь из магазина железных дверей или пластиковую дверь из соответствующего магазина. Плюс вам может понадобиться установщик с нужной специальностью, например, плотник для деревянной двери, жестянщик для металической и так далее. Как вы можете видеть, теперь существует зависимость между дверми: деревянная требует плотника, металлическая - жестянщика и т.д. 
 
-In plain words
-> A factory of factories; a factory that groups the individual but related/dependent factories together without specifying their concrete classes.
-Фабрика фабрик; фабика, которая группирует индивидуальные, но связанные/зависимые фабрики вместе без указания их конкретных классов.
+Простыми словами
+> Фабрика фабрик; фабика, которая группирует индивидуальные, но связанные/зависимые фабрики вместе без указания их конкретных классов.
 
-Wikipedia says
-> The abstract factory pattern provides a way to encapsulate a group of individual factories that have a common theme without specifying their concrete classes
+[Википедия](https://ru.wikipedia.org/wiki/%D0%90%D0%B1%D1%81%D1%82%D1%80%D0%B0%D0%BA%D1%82%D0%BD%D0%B0%D1%8F_%D1%84%D0%B0%D0%B1%D1%80%D0%B8%D0%BA%D0%B0_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F))
+> Абстрактная фабрика (англ. Abstract factory) — порождающий шаблон проектирования, предоставляет интерфейс для создания семейств взаимосвязанных или взаимозависимых объектов, не специфицируя их конкретных классов. Шаблон реализуется созданием абстрактного класса Factory, который представляет собой интерфейс для создания компонентов системы (например, для оконного интерфейса он может создавать окна и кнопки). Затем пишутся классы, реализующие этот интерфейс.
 
-**Programmatic Example**
+**Пример кода**
 
-Translating the door example above. First of all we have our `Door` interface and some implementation for it
 Реализуем описанный пример с дверьми. Прежде всего у нас будет интерфейс `Door` и несколько его имплементаций.
 
 ```php
@@ -249,7 +247,7 @@ class IronDoor implements Door
     }
 }
 ```
-Then we have some fitting experts for each door type
+Затем у нас будут несколько соответствующих экспертов для каждого вида двери
 
 ```php
 interface DoorFittingExpert
@@ -274,7 +272,7 @@ class Carpenter implements DoorFittingExpert
 }
 ```
 
-Now we have our abstract factory that would let us make family of related objects i.e. wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
+Теперь создадим абстрактную фабрику, которая бы позволяла создавать семейство взаимосвязанных объектов, например, фабрика деревянных дверей создает деревянную двурь и эксперта по деревянным дверям, а фабрика железных дверей должна создавать железные двери и экспертов по ним.
 ```php
 interface DoorFactory
 {
@@ -310,7 +308,7 @@ class IronDoorFactory implements DoorFactory
     }
 }
 ```
-And then it can be used as
+затем это может быть использованно следующим образом
 ```php
 $woodenFactory = new WoodenDoorFactory();
 
@@ -330,22 +328,22 @@ $door->getDescription();  // Output: I am an iron door
 $expert->getDescription(); // Output: I can only fit iron doors
 ```
 
-As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.   
+Как вы можете видеть, фабрика деревянных дверей инкапсулирует `carpenter` и `wooden door`, в то время как фабрика железных дверей инкапсулирует `iron door` и `welder`. И таким образом, это дает нам уверенность, что для каждой созданной двери мы не перепутаем соответствующего эксперта.
 
-**When to use?**
+**Когда использовать?**
 
-When there are interrelated dependencies with not-that-simple creation logic involved
+Когда существуют взаимодействующие зависимости с не-совсем-простой логикой создания.
 
-👷 Builder
+👷 Строитель _(англ. builder)_
 --------------------------------------------
-Real world example
+Пример из реального мира
 > Imagine you are at Hardee's and you order a specific deal, lets say, "Big Hardee" and they hand it over to you without *any questions*; this is the example of simple factory. But there are cases when the creation logic might involve more steps. For example you want a customized Subway deal, you have several options in how your burger is made e.g what bread do you want? what types of sauces would you like? What cheese would you want? etc. In such cases builder pattern comes to the rescue.
 
-In plain words
+Простыми словами
 > Allows you to create different flavors of an object while avoiding constructor pollution. Useful when there could be several flavors of an object. Or when there are a lot of steps involved in creation of an object.
 
-Wikipedia says
-> The builder pattern is an object creation software design pattern with the intentions of finding a solution to the telescoping constructor anti-pattern.
+[Википедия](https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D1%80%D0%BE%D0%B8%D1%82%D0%B5%D0%BB%D1%8C_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F))
+> Строитель (англ. Builder) — порождающий шаблон проектирования предоставляет способ создания составного объекта.
 
 Having said that let me add a bit about what telescoping constructor anti-pattern is. At one point or the other we have all seen a constructor like below:
 
@@ -357,7 +355,7 @@ public function __construct($size, $cheese = true, $pepperoni = true, $tomato = 
 
 As you can see; the number of constructor parameters can quickly get out of hand and it might become difficult to understand the arrangement of parameters. Plus this parameter list could keep on growing if you would want to add more options in future. This is called telescoping constructor anti-pattern.
 
-**Programmatic Example**
+**Пример кода**
 
 The sane alternative is to use the builder pattern. First of all we have our burger that we want to make
 
@@ -429,7 +427,7 @@ class BurgerBuilder
     }
 }
 ```
-And then it can be used as:
+И затем, мы это можем использовать так:
 
 ```php
 $burger = (new BurgerBuilder(14))
@@ -439,24 +437,25 @@ $burger = (new BurgerBuilder(14))
                     ->build();
 ```
 
-**When to use?**
+**Когда использовать?**
 
 When there could be several flavors of an object and to avoid the constructor telescoping. The key difference from the factory pattern is that; factory pattern is to be used when the creation is a one step process while builder pattern is to be used when the creation is a multi step process.
 
-🐑 Prototype
+🐑 Прототип _(англ. prototype)_
 ------------
-Real world example
+Пример из реального мира
 > Remember dolly? The sheep that was cloned! Lets not get into the details but the key point here is that it is all about cloning
 
-In plain words
+Простыми словами
 > Create object based on an existing object through cloning.
 
-Wikipedia says
-> The prototype pattern is a creational design pattern in software development. It is used when the type of objects to create is determined by a prototypical instance, which is cloned to produce new objects.
+[Википедия](https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D1%82%D0%BE%D1%82%D0%B8%D0%BF_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F))
+> Задаёт виды создаваемых объектов с помощью экземпляра-прототипа и создаёт новые объекты путём копирования этого прототипа. Он позволяет уйти от реализации и позволяет следовать принципу «программирование через интерфейсы». В качестве возвращающего типа указывается интерфейс/абстрактный класс на вершине иерархии, а классы-наследники могут подставить туда наследника, реализующего этот тип.
+Проще говоря, это паттерн создания объекта через клонирование другого объекта вместо создания через конструктор.
 
 In short, it allows you to create a copy of an existing object and modify it to your needs, instead of going through the trouble of creating an object from scratch and setting it up.
 
-**Programmatic Example**
+**Пример кода**
 
 In PHP, it can be easily done using `clone`
 
@@ -508,24 +507,24 @@ echo $cloned->getCategory(); // Mountain sheep
 
 Also you could use the magic method `__clone` to modify the cloning behavior.
 
-**When to use?**
+**Когда использовать?**
 
 When an object is required that is similar to existing object or when the creation would be expensive as compared to cloning.
 
-💍 Singleton
+💍 Одиночка _(англ. singleton)_
 ------------
-Real world example
+Пример из реального мира
 > There can only be one president of a country at a time. The same president has to be brought to action, whenever duty calls. President here is singleton.
 
-In plain words
+Простыми словами
 > Ensures that only one object of a particular class is ever created.
 
-Wikipedia says
-> In software engineering, the singleton pattern is a software design pattern that restricts the instantiation of a class to one object. This is useful when exactly one object is needed to coordinate actions across the system.
+[Википедия](https://ru.wikipedia.org/wiki/%D0%9E%D0%B4%D0%B8%D0%BD%D0%BE%D1%87%D0%BA%D0%B0_(%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD_%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F))
+> Одиночка (англ. Singleton) — порождающий шаблон проектирования, гарантирующий, что в однопроцессном приложении будет единственный экземпляр некоторого класса, и предоставляющий глобальную точку доступа к этому экземпляру..
 
 Singleton pattern is actually considered an anti-pattern and overuse of it should be avoided. It is not necessarily bad and could have some valid use-cases but should be used with caution because it introduces a global state in your application and change to it in one place could affect in the other areas and it could become pretty difficult to debug. The other bad thing about them is it makes your code tightly coupled plus it mocking the singleton could be difficult.
 
-**Programmatic Example**
+**Пример кода**
 
 To create a singleton, make the constructor private, disable cloning, disable extension and create a static variable to house the instance
 ```php
